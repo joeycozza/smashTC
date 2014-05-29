@@ -1,0 +1,70 @@
+<html ng-app>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+    <script src="controllers/indexCtrl.js"></script>
+    <link rel="stylesheet" type="text/css" href="./css/main.css"/>
+</head>
+<body>
+<div ng-controller='IndexCtrl'>
+
+    <h1>Hey Jimmy.  Just prototyping some junk</h1>
+    <label for="streamName">Input the Name of the twitch stream</label>
+    <input id="streamName" ng-model="streamName" type="text">
+    <br>
+    <label for="toggleStream">Click to Show Stream</label>
+    <input id="toggleStream" ng-model="showStream" type="checkbox">
+    <br>
+
+    <object ng-if="showStream" type="application/x-shockwave-flash"
+            height="400"
+            width="800"
+            id="live_embed_player_flash"
+            data="http://www.twitch.tv/widgets/live_embed_player.swf?channel={{streamName}}"
+            bgcolor="#000000">
+        <param name="allowFullScreen"
+               value="true"/>
+        <param name="allowScriptAccess"
+               value="always"/>
+        <param name="allowNetworking"
+               value="all"/>
+        <param name="movie"
+               value="http://www.twitch.tv/widgets/live_embed_player.swf"/>
+        <param name="flashvars"
+               value="hostname=www.twitch.tv&channel={{streamName}}&auto_play=true&start_volume=25"/>
+    </object>
+    <!--<iframe ng-if="showStream" frameborder="0"-->
+            <!--scrolling="no"-->
+            <!--id="chat_embed"-->
+            <!--src="http://twitch.tv/chat/embed?channel={{streamName}}&amp;popout_chat=true"-->
+            <!--height="400"-->
+            <!--width="200">-->
+    <!--</iframe>-->
+
+
+    <!--<div ng-repeat="stream in streams">-->
+    <!--<h3>{{stream.channel.name}} Viewers {{stream.viewers}}</h3>-->
+    <!--<input type="checkbox" ng-model="$indexType">-->
+    <!--<img class="preview" src="{{stream.preview.medium}}">-->
+    <!---->
+    <!--<object ng-if="$indexType" type="application/x-shockwave-flash"-->
+    <!--height="200"-->
+    <!--width="400"-->
+    <!--id="live_embed_player_flash"-->
+    <!--data="http://www.twitch.tv/widgets/live_embed_player.swf?channel={{stream.channel.name}}"-->
+    <!--bgcolor="#000000">-->
+    <!--<param  name="allowFullScreen"-->
+    <!--value="true" />-->
+    <!--<param  name="allowScriptAccess"-->
+    <!--value="always" />-->
+    <!--<param  name="allowNetworking"-->
+    <!--value="all" />-->
+    <!--<param  name="movie"-->
+    <!--value="http://www.twitch.tv/widgets/live_embed_player.swf" />-->
+    <!--<param  name="flashvars"-->
+    <!--value="hostname=www.twitch.tv&channel={{stream.channel.name}}&auto_play=true&start_volume=25" />-->
+    <!--</object>-->
+
+</div>
+</div>
+</body>
+</html>
