@@ -3,7 +3,7 @@ var request = require('request');
 var router = express.Router();
 
 /* GET home page. */
-router.get('/', function (req, res) {
+router.get('/smashstreams', function (req, res) {
 
 	request("https://api.twitch.tv/kraken/streams?game=Super Smash Bros. Melee", function (error, response, body) {
 		if (error) {
@@ -15,5 +15,6 @@ router.get('/', function (req, res) {
 		}
 	});
 });
+
 
 module.exports = router;

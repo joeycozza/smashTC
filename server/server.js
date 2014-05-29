@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-var debug = require('debug')('generated-express-app');
 var app = require('./app');
 
 app.set('port', process.env.PORT || 1337);
