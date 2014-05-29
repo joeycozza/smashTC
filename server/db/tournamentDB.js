@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var fakeTournaments = require('./util/fakeTournaments');
 
 
 var tournamentSchema = mongoose.Schema({
@@ -19,4 +20,10 @@ var TournamentModel = mongoose.model('Experience', tournamentSchema);
 
 exports.getTournamentModel = function getTournamentModel() {
 	return TournamentModel;
+};
+
+exports.getTournaments = function(req, res) {
+console.log('Made it to getTournaments');
+	res.send([fakeTournaments.getFakeEvo()]);
+
 };

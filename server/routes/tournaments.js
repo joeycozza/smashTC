@@ -1,9 +1,8 @@
 var express = require('express');
 var router = express.Router();
+var tournamentDB = require('../db/tournamentDB');
 
 /* GET tournament listing. */
-router.get('/', function(req, res) {
-	res.send('respond with a resource');
-});
+router.get('/', tournamentDB.getTournaments);
 
 module.exports = router;
