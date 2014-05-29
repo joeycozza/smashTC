@@ -2,8 +2,8 @@ var express = require('express');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var request = require('request');
 
-var routes = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
@@ -30,7 +30,19 @@ app.use(function (req, res, next) {
 	next();
 });
 
-app.use('/smashstreams', routes);
 app.use('/users', users);
+app.use('/tournaments', users);
+
+app.get('/smashstreams', function (req, res) {
+	request("https://api.twitch.tv/kraken/streams?game=Super Smash Bros. Melee", function (error, response, body) {
+		if (error) {
+			res.send(500, error);
+		} else {
+			var bodyObj = JSON.parse(body);
+			console.log(bodyObj.streams);
+			res.send(bodyObj.streams);
+		}
+	});
+});
 
 module.exports = app;
