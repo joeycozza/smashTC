@@ -9,13 +9,18 @@ function IndexCtrl($scope, $http) {
 		});
 }
 
-function TournyCtrl($scope, $http) {
+function TournyCtrl($scope, $http, $sce) {
 
 	console.log('Made it to tourny controller');
 	$http.get('http://localhost:1337/tournaments')
 		.success(function(res) {
-			console.log('IT WAS A SUCCESS');
-			$scope.tournaments = res;
+			$scope.tournaments = res.map(function(tourny) {
+				tourny.challongeUrls = tourny.challongeUrls.map(function(challongeUrl) {
+					challongeUrl.url = $sce.trustAsResourceUrl(challongeUrl.url);
+					return challongeUrl;
+				});
+				return tourny;
+			});
 		}).error(function(error) {
 			console.log('We got an error');
 			console.log(error);
