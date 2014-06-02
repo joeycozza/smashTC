@@ -19,6 +19,7 @@ function TournyCtrl($scope, $http, $sce) {
 					challongeUrl.url = $sce.trustAsResourceUrl(challongeUrl.url);
 					return challongeUrl;
 				});
+				tourny.twitchChatUrl = $sce.trustAsResourceUrl(tourny.twitchChatUrl);
 				return tourny;
 			});
 		}).error(function(error) {

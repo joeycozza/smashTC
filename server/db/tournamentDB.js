@@ -41,5 +41,6 @@ exports.getTournamentModel = function getTournamentModel() {
 };
 
 exports.getTournaments = function (req, res) {
+	console.log('Tried getting tournaments');
 	res.send([fakeTournaments.getSKTAR()]);
 };
